@@ -9,15 +9,13 @@ import { StepFour } from "./_feature/StepFour";
 import "./index.css";
 
 export default function Home() {
-  const [Step, setStep] = useState(1);
+  const [Step, setStep] = useState(3);
 
   const HandleNextStep = () => {
     setStep(Step + 1);
   };
 
   const HandleBackStep = () => {
-    console.log("hi");
-
     if (Step === 1) {
       return;
     } else {

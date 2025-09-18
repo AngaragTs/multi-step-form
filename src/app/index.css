@@ -126,3 +126,12 @@ body {
   flex-direction: column;
   justify-content: space-between;
 }
+.input2 {
+  height: 230px;
+  width: 400px;
+  border-color: #0ca5e9;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid #cbd5e1;
+  outline-color: #0ca5e9;
+}

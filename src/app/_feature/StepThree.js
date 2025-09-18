@@ -19,7 +19,7 @@ export const StepThree = (props) => {
         <p className="text">
           Profile image <span style={{ color: "red" }}>*</span>{" "}
         </p>
-        <input type="image" className="input"></input>
+        <input type="file" className="input2"></input>
       </div>
 
       <div
@@ -43,9 +43,5 @@ export const StepThree = (props) => {
         </button>
       </div>
     </div>
-
-    // <div>
-    //   <button onClick={HandleBackStep}>BACK</button>
-    // </div>
   );
 };
