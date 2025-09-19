@@ -9,7 +9,7 @@ import { StepFour } from "./_feature/StepFour";
 import "./index.css";
 
 export default function Home() {
-  const [Step, setStep] = useState(3);
+  const [Step, setStep] = useState(1);
 
   const HandleNextStep = () => {
     setStep(Step + 1);
