@@ -1,6 +1,54 @@
+import { FormInput } from "../_componant/forminput";
+import { use, useState } from "react";
+
 export const StepThree = (props) => {
   const { HandleBackStep } = props;
   const { HandleNextStep } = props;
+
+  const [formValues, setFormValues] = useState({
+    DateofBirth: "",
+    ProfileImage: "",
+  });
+
+  const [errorState, setErrorstate] = useState({});
+  const handleInputChange = (e) => {
+    const inputName = e.target.name;
+    const inputValue = e.target.value;
+
+    setFormValues({ ...formValues, [inputName]: inputValue });
+  };
+
+  const validateInput = () => {
+    const errors = {};
+
+    if ((formValues.DateofBirth = "")) {
+      errors.DateofBirth = "Please select a date.";
+    }
+
+    if ((formValues.ProfileImage = "")) {
+      errors.ProfileImage = "Image cannot be blank";
+    }
+
+    return errors;
+  };
+
+  const HandleContinueButton = () => {
+    const errors = validateInput();
+    if (Object.keys(errors).length === 0) {
+      setErrorstate({});
+      HandleNextStep();
+    } else {
+      setErrorstate(errors);
+    }
+  };
+
+  // const shouldDisableButton = () => {
+  //   return (
+  //     formValues.DateofBirth.length === " " ||
+  //     formValues.ProfileImage.length === "
+  //   );
+  // };
+
   return (
     <div className="temp">
       <div className="head">
@@ -11,13 +59,19 @@ export const StepThree = (props) => {
         </p>
       </div>
       <div style={{ paddingtop: "80px" }}>
-        <p className="text">
-          Date of Birth <span style={{ color: "red" }}>*</span>{" "}
+        <p
+          className="text"
+          handleChange="handleInputChange"
+          value={formValues.DateofBirth}
+          error={errorState.DateofBirth}
+          errorMessage={errorState.DateofBirth}
+        >
+          Date of Birth date.<span style={{ color: "red" }}>*</span>
         </p>
-        <input type="Date" className="input" placeholder="Placeholder"></input>
+        <input type="Date" className="input"></input>
 
-        <p className="text">
-          Profile image <span style={{ color: "red" }}>*</span>{" "}
+        <p className="text" handleChange="handleInputChange">
+          Profile image <span style={{ color: "red" }}>*</span>
         </p>
         <input type="file" className="input2"></input>
       </div>
@@ -35,8 +89,8 @@ export const StepThree = (props) => {
           Back
         </button>
         <button
-          //   disabled={shouldDisableButton()}
-          onClick={HandleNextStep}
+          // disabled={shouldDisableButton()}
+          onClick={HandleContinueButton}
           className="step2button"
         >
           Continue
